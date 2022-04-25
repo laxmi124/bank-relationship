@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const MasterAccount = require("../models/masterAccount.model");
+const SavingsAccount = require("../models/savingsAccount.model");
+const FixedAccount = require("../models/fixedAccount.model");
 
 router.get("/", async (req, res) => {
 	try {
@@ -24,6 +26,22 @@ router.get("/:id", async (req,res)=>{
 router.post("/", async (req, res) => {
 	try {
 		const createmasterAccount = await MasterAccount.create(req.body);
+		return res.send(createmasterAccount);
+	} catch (err) {
+		return res.status(500).send(err.message);
+	}
+});
+router.patch("/:id", async (req, res) => {
+	try {
+		const createmasterAccount = await SavingsAccount.findByIdAndUpdate("savingsAccount_id");
+		return res.send(createmasterAccount);
+	} catch (err) {
+		return res.status(500).send(err.message);
+	}
+});
+router.patch("/:id", async (req, res) => {
+	try {
+		const createmasterAccount = await FixedAccount.findByIdAndUpdate("fixedAccount");
 		return res.send(createmasterAccount);
 	} catch (err) {
 		return res.status(500).send(err.message);
