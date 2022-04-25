@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
 		return res.status(500).send(err.message);
 	}
 });
-router.patch("/:id", async (req, res) => {
+router.patch("/:id/savingsmaster", async (req, res) => {
 	try {
 		const createmasterAccount = await SavingsAccount.findByIdAndUpdate("savingsAccount_id");
 		return res.send(createmasterAccount);
@@ -39,7 +39,7 @@ router.patch("/:id", async (req, res) => {
 		return res.status(500).send(err.message);
 	}
 });
-router.patch("/:id", async (req, res) => {
+router.patch("/:id/fixedmaster", async (req, res) => {
 	try {
 		const createmasterAccount = await FixedAccount.findByIdAndUpdate("fixedAccount");
 		return res.send(createmasterAccount);
