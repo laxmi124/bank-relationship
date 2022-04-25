@@ -31,17 +31,17 @@ router.post("/", async (req, res) => {
 		return res.status(500).send(err.message);
 	}
 });
-router.patch("/:id/savingsmaster", async (req, res) => {
+router.patch("/:id/savingsAccount", async (req, res) => {
 	try {
-		const createmasterAccount = await SavingsAccount.findByIdAndUpdate("savingsAccount_id");
+		const createmasterAccount = await SavingsAccount.find({savingsAccount_id:req.params.id});
 		return res.send(createmasterAccount);
 	} catch (err) {
 		return res.status(500).send(err.message);
 	}
 });
-router.patch("/:id/fixedmaster", async (req, res) => {
+router.patch("/:id/fixedAccount", async (req, res) => {
 	try {
-		const createmasterAccount = await FixedAccount.findByIdAndUpdate("fixedAccount");
+		const createmasterAccount = await FixedAccount.find({fixedAccount : req.params.id});
 		return res.send(createmasterAccount);
 	} catch (err) {
 		return res.status(500).send(err.message);
